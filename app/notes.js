@@ -24,9 +24,17 @@ return note;
 
 };
 
-var getAll = () => {
+var getAll = () =>
 
-  console.log('Getting all');
+{
+  var notesJson = fetchNotes();
+
+  console.log('Returning all notes.');
+    for(var item of notesJson)
+    {
+        console.log(`Title: ${item.title}, Body: ${item.body}`);
+    }
+
 }
 
 
