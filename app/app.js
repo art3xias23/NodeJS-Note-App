@@ -20,7 +20,7 @@ if (command == 'add')
 {
   var note = notes.addNote(argv.title, argv.body);
   if (note == undefined)
-  console.log('No note was returned');
+  console.log('Note already exists');
   else{
   console.log('The note was succesfully written');
   console.log('--');
@@ -35,5 +35,9 @@ else if (command == 'read')
   notes.readNote(argv.title);
 }
 else if (command == 'remove') {
-notes.removeNote(argv.title);
+var  noteRemoved = notes.removeNote(argv.title);
+noteRemoved ? console.log('No note was removed') : console.log('Note successfully removed');
+
+
+
   }
