@@ -11,8 +11,8 @@ const argv = yargs.argv;
 var command = argv._[0];
 
 console.log('Command: ', command);
-console.log('Process: ', process.argv);
-console.log('Yargs: ', argv);
+// console.log('Process: ', process.argv);
+// console.log('Yargs: ', argv);
 
 console.log(process.argv);
 
@@ -32,7 +32,8 @@ if (command == 'add')
 }
 else if (command == 'read')
 {
-  notes.readNote(argv.title);
+  notes.getNote(argv.title);
+
 }
 else if (command == 'remove') {
 var  noteRemoved = notes.removeNote(argv.title);

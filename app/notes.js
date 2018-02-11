@@ -2,6 +2,7 @@ console.log('Starting notes.js');
 
 const fs = require('fs');
 const app = require('./app.js');
+const forof = require('for-of');
 var eol = require('os').EOL;
 
 
@@ -10,8 +11,8 @@ var addNote = (title, body) => {
  var notes = fetchNotes();
 var note = {
   title,
-  body,
-  eol
+  body
+
 };
 
 var duplicateNotes = notes.filter((note) => note.title ===title);
@@ -31,7 +32,20 @@ var getAll = () => {
 
 var getNote =(title) =>
 {
-  console.log('ReadingNote', app.title);
+  var notesJson = fetchNotes();
+  var note = notesJson.filter(function(x){return x.title==title});
+  if (!note.length)
+  {
+    console.log('No notes have been found with that title');
+  }
+  else
+  {
+    console.log('Notes have been found');
+      for(var item of note)
+      {
+          console.log(`Title: ${item.title}, Body: ${item.body}`);
+      }
+  }
 }
 
 var removeNote = (title) =>
@@ -65,6 +79,6 @@ var saveNotes = (notes) =>
 module.exports = {
   addNote,
   getAll,
-  readNote,
+  getNote,
   removeNote
 };
