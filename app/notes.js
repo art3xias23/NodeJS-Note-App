@@ -29,7 +29,7 @@ var getAll = () => {
 }
 
 
-var readNote =(title) =>
+var getNote =(title) =>
 {
   console.log('ReadingNote', app.title);
 }
