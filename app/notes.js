@@ -1,7 +1,6 @@
 console.log('Starting notes.js');
 
 const fs = require('fs');
-const app = require('./app.js');
 const forof = require('for-of');
 var eol = require('os').EOL;
 
@@ -30,11 +29,7 @@ var getAll = () =>
   var notesJson = fetchNotes();
 
   console.log('Returning all notes.');
-    for(var item of notesJson)
-    {
-        console.log(`Title: ${item.title}, Body: ${item.body}`);
-    }
-
+logNotes(notesJson);
 }
 
 
@@ -49,10 +44,7 @@ var getNote =(title) =>
   else
   {
     console.log('Notes have been found');
-      for(var item of note)
-      {
-          console.log(`Title: ${item.title}, Body: ${item.body}`);
-      }
+    logNotes(note);
   }
 }
 
@@ -81,6 +73,15 @@ var fetchNotes = () =>
 var saveNotes = (notes) =>
 {
   fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+}
+
+var logNotes =(noteDataString) =>{
+
+    for(var item of noteDataString)
+    {
+      debugger;
+        console.log(`Title: ${item.title}, Body: ${item.body}`);
+    }
 }
 
 //export the functions to require
