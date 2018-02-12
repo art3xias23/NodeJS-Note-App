@@ -3,22 +3,30 @@ console.log('Starting app.js');
 const fs = require('fs');
 const _ = require('lodash');
 const yargs = require('yargs');
+const titleOptions = {
+    describe: 'The title of the note',
+    demand: true,
+    alias: 'b'
+};
+const bodyOptions = {
+    describe: 'Body of the note',
+    demand: true,
+    alias: 'b'
+};
+
 
 const notes = require('./notes.js');
 
 const argv = require('yargs')
 .command('add', 'Adding a note',{
-  title:{
-    describe: 'Title of the note',
-    demand: true,
-    alias : 't'
-  },
-  body:{
-    describe: 'Body of the note',
-    demand: true,
-    alias: 'b'
-  }
-})
+  title:titleOptions,
+  body:bodyOptions})
+.command('list', 'List all notes')
+.command('read', 'Read an individual note', {
+  title: titleOptions})
+.command('remove', 'Removing a note',
+{
+  title:titleOptions})
 .help()
 .argv;
 
